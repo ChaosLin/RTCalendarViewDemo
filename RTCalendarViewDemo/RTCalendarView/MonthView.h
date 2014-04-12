@@ -12,4 +12,7 @@
 
 @property (nonatomic, assign) NSInteger year;
 @property (nonatomic, assign) NSInteger month;
+
+- (void)showPreviousMonth;
+- (void)showNextMonth;
 @end

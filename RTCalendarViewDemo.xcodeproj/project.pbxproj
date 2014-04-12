@@ -23,6 +23,7 @@
 		5935BB4718F7683200C0EBF4 /* MonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4518F7683200C0EBF4 /* MonthView.m */; };
 		5935BB4B18F7688200C0EBF4 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4A18F7688200C0EBF4 /* DateUtils.m */; };
 		5935BB4C18F7688200C0EBF4 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4A18F7688200C0EBF4 /* DateUtils.m */; };
+		59D0B2FF18F91A4D0061D519 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D0B2FE18F91A4D0061D519 /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		5935BB4518F7683200C0EBF4 /* MonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthView.m; sourceTree = "<group>"; };
 		5935BB4918F7688200C0EBF4 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		5935BB4A18F7688200C0EBF4 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
+		59D0B2FD18F91A4D0061D519 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		59D0B2FE18F91A4D0061D519 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				5935BB4318F7676C00C0EBF4 /* RTCalendarView */,
 				5935BB2318F7675900C0EBF4 /* AppDelegate.h */,
 				5935BB2418F7675900C0EBF4 /* AppDelegate.m */,
+				59D0B2FD18F91A4D0061D519 /* TestViewController.h */,
+				59D0B2FE18F91A4D0061D519 /* TestViewController.m */,
 				5935BB2618F7675900C0EBF4 /* Images.xcassets */,
 				5935BB1B18F7675900C0EBF4 /* Supporting Files */,
 			);
@@ -271,6 +276,7 @@
 				5935BB4B18F7688200C0EBF4 /* DateUtils.m in Sources */,
 				5935BB2118F7675900C0EBF4 /* main.m in Sources */,
 				5935BB4618F7683200C0EBF4 /* MonthView.m in Sources */,
+				59D0B2FF18F91A4D0061D519 /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +475,7 @@
 				5935BB3F18F7675900C0EBF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5935BB4018F7675900C0EBF4 /* Build configuration list for PBXNativeTarget "RTCalendarViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +484,7 @@
 				5935BB4218F7675900C0EBF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

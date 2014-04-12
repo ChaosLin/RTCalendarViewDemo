@@ -98,4 +98,32 @@
     XCTAssert(3 == [DateUtils getRowWithDayId:20140519] , @"fail");
     XCTAssert(4 == [DateUtils getRowWithDayId:20140531] , @"fail");
 }
+
+- (void)testNumberOfRowsInYearAndMonth
+{
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:1], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:2], @"fail");
+    XCTAssert(6 == [DateUtils numberOfRowsInYear:2014 month:3], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:4], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:5], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:6], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:7], @"fail");
+    XCTAssert(6 == [DateUtils numberOfRowsInYear:2014 month:8], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:9], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:10], @"fail");
+    XCTAssert(6 == [DateUtils numberOfRowsInYear:2014 month:11], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2014 month:12], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:1], @"fail");
+    XCTAssert(4 == [DateUtils numberOfRowsInYear:2015 month:2], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:3], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:4], @"fail");
+    XCTAssert(6 == [DateUtils numberOfRowsInYear:2015 month:5], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:6], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:7], @"fail");
+    XCTAssert(6 == [DateUtils numberOfRowsInYear:2015 month:8], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:9], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:10], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:11], @"fail");
+    XCTAssert(5 == [DateUtils numberOfRowsInYear:2015 month:12], @"fail");
+}
 @end

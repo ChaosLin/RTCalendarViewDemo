@@ -32,4 +32,5 @@
 + (NSInteger)getRowWithDayId:(NSInteger)dayId;
 //20140412 -> 7 [0 ~ 6]
 + (NSInteger)getVolumeWithDayId:(NSInteger)dayId;
++ (NSInteger)numberOfRowsInYear:(NSInteger)year month:(NSInteger)month;
 @end

@@ -204,4 +204,12 @@
     //tm->tm_wday
     return 7 == weekday?0:weekday;
 }
+
++ (NSInteger)numberOfRowsInYear:(NSInteger)year month:(NSInteger)month
+{
+    NSInteger numberOfDays = [self numberOfDaysInYear:year month:month];
+    NSInteger dayId_last = [self getDayIdWithYear:year month:month day:numberOfDays];
+    NSInteger row = [self getRowWithDayId:dayId_last];
+    return row + 1;
+}
 @end
