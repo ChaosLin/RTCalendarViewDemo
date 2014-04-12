@@ -19,6 +19,10 @@
 		5935BB3018F7675900C0EBF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5935BB1818F7675900C0EBF4 /* UIKit.framework */; };
 		5935BB3818F7675900C0EBF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5935BB3618F7675900C0EBF4 /* InfoPlist.strings */; };
 		5935BB3A18F7675900C0EBF4 /* RTCalendarViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB3918F7675900C0EBF4 /* RTCalendarViewDemoTests.m */; };
+		5935BB4618F7683200C0EBF4 /* MonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4518F7683200C0EBF4 /* MonthView.m */; };
+		5935BB4718F7683200C0EBF4 /* MonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4518F7683200C0EBF4 /* MonthView.m */; };
+		5935BB4B18F7688200C0EBF4 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4A18F7688200C0EBF4 /* DateUtils.m */; };
+		5935BB4C18F7688200C0EBF4 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4A18F7688200C0EBF4 /* DateUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		5935BB3518F7675900C0EBF4 /* RTCalendarViewDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RTCalendarViewDemoTests-Info.plist"; sourceTree = "<group>"; };
 		5935BB3718F7675900C0EBF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5935BB3918F7675900C0EBF4 /* RTCalendarViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTCalendarViewDemoTests.m; sourceTree = "<group>"; };
+		5935BB4418F7683200C0EBF4 /* MonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthView.h; sourceTree = "<group>"; };
+		5935BB4518F7683200C0EBF4 /* MonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthView.m; sourceTree = "<group>"; };
+		5935BB4918F7688200C0EBF4 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
+		5935BB4A18F7688200C0EBF4 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,8 @@
 		5935BB1A18F7675900C0EBF4 /* RTCalendarViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5935BB4818F7686800C0EBF4 /* DateUtils */,
+				5935BB4318F7676C00C0EBF4 /* RTCalendarView */,
 				5935BB2318F7675900C0EBF4 /* AppDelegate.h */,
 				5935BB2418F7675900C0EBF4 /* AppDelegate.m */,
 				5935BB2618F7675900C0EBF4 /* Images.xcassets */,
@@ -142,6 +152,24 @@
 				5935BB3618F7675900C0EBF4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5935BB4318F7676C00C0EBF4 /* RTCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				5935BB4418F7683200C0EBF4 /* MonthView.h */,
+				5935BB4518F7683200C0EBF4 /* MonthView.m */,
+			);
+			path = RTCalendarView;
+			sourceTree = "<group>";
+		};
+		5935BB4818F7686800C0EBF4 /* DateUtils */ = {
+			isa = PBXGroup;
+			children = (
+				5935BB4918F7688200C0EBF4 /* DateUtils.h */,
+				5935BB4A18F7688200C0EBF4 /* DateUtils.m */,
+			);
+			path = DateUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5935BB2518F7675900C0EBF4 /* AppDelegate.m in Sources */,
+				5935BB4B18F7688200C0EBF4 /* DateUtils.m in Sources */,
 				5935BB2118F7675900C0EBF4 /* main.m in Sources */,
+				5935BB4618F7683200C0EBF4 /* MonthView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5935BB3A18F7675900C0EBF4 /* RTCalendarViewDemoTests.m in Sources */,
+				5935BB4C18F7688200C0EBF4 /* DateUtils.m in Sources */,
+				5935BB4718F7683200C0EBF4 /* MonthView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
