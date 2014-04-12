@@ -7,14 +7,16 @@
 //
 
 #import "MonthView.h"
+#import "DateUtils.h"
 
 @interface MonthView()
 
 - (NSInteger)daysInThisMonth;
 - (NSInteger)weekdayOfTheFirstDayInThisMonth;
-//某一天对应第几行、第几列
-//day:20140411
-- (void)getRow:(NSInteger)row volumn:(NSInteger)volumn forDayID:(NSInteger)day;
+//某一天对应第几行、第几列,以周日为第0列,最开始的一行为第0行
+//day:20140411 -> row:1 volume:6
+- (NSInteger)getRowForDayId:(NSInteger)day;
+- (NSInteger)getVolumeForDayId:(NSInteger)day;
 
 @end
 
@@ -38,4 +40,27 @@
 }
 */
 
+#pragma mark - base
+- (NSInteger)daysInThisMonth
+{
+    return [DateUtils numberOfDaysInYear:self.year month:self.month];
+}
+
+- (NSInteger)weekdayOfTheFirstDayInThisMonth
+{
+    NSInteger dayId = [DateUtils getDayIdWithYear:self.year month:self.month day:1];
+    return [DateUtils getWeekDayWithDayId:dayId];
+}
+
+//某一天对应第几行、第几列,以周日为第0列,最开始的一行为第0行
+//day:20140411 -> row:1 volume:6
+- (NSInteger)getRowForDayId:(NSInteger)day
+{
+    return [DateUtils getRowWithDayId:day];
+}
+
+- (NSInteger)getVolumeForDayId:(NSInteger)day
+{
+    return [DateUtils getRowWithDayId:day];
+}
 @end
