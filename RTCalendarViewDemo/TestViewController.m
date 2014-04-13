@@ -9,6 +9,7 @@
 #import "TestViewController.h"
 #import "MonthView.h"
 #import "DayCellView.h"
+#import "DateUtils.h"
 
 @interface TestViewController ()<MonthViewResource, MonthViewDelegate>
 @property (nonatomic, strong) MonthView* monthView;
@@ -86,7 +87,7 @@
 
 - (void)showNextMonth
 {
-    [self.monthView showToday];
+    [self.monthView showNextMonth];
 }
 
 #pragma mark - MonthViewResource
@@ -98,13 +99,18 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.text = [NSString stringWithFormat:@"%d", dayId % 100];
     [dayView addSubview:label];
+    
+    NSInteger dayId_today = [DateUtils getDayIdWithDate:[NSDate date]];
+    if (dayId == dayId_today)
+    {
+        dayView.backgroundColor = [UIColor redColor];
+    }
     return dayView;
 }
 
 #pragma mark - MonthViewDelegate
 - (void)monthView:(MonthView *)monthView didSelectDayId:(NSInteger)dayId
 {
-    NSLog(@"selected: %d", dayId);
     DayCellView* dayView = [monthView dayViewForDayId:dayId];
 //    dayView.backgroundColor = [UIColor greenColor];
 }
