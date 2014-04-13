@@ -55,6 +55,10 @@
     {
         [subView removeFromSuperview];
     }
+    if (0 >= self.year || 0 >= self.month || 12 < self.month)
+    {
+        return;
+    }
     NSInteger count_day = [DateUtils numberOfDaysInYear:self.year month:self.month];
     for (NSInteger i = 1; i <= count_day; i++)
     {
