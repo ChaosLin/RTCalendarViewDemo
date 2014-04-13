@@ -10,7 +10,7 @@
 #import "DateUtils.h"
 #import "DayCellView.h"
 
-@interface MonthView()
+@interface MonthView()<DayCellViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary* dic_day2views;
 
@@ -112,6 +112,8 @@
             }
             if (dayView)
             {
+                dayView.delegate = self;
+                dayView.dayId = dayId;
                 [self.dic_day2views setValue:dayView forKey:str_day];
             }
         }
@@ -119,9 +121,19 @@
     return dayView;
 }
 
-- (DayCellView*)cellViewForDay:(NSInteger)day
+- (DayCellView*)dayViewForDayId:(NSInteger)dayId
 {
-    return [self.dic_day2views valueForKey:[NSString stringWithFormat:@"%d", day]];
+    NSInteger year = dayId / 10000;
+    NSInteger month = dayId / 100 % 100;
+    if (year == self.year && month == self.month)
+    {
+        NSInteger day = dayId % 100;
+        return [self.dic_day2views valueForKey:[NSString stringWithFormat:@"%d", day]];
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (void)showPreviousMonth
@@ -212,5 +224,27 @@
     }
 }
 
-#pragma mark -
+- (void)setDayId_currentSelected:(NSInteger)dayId_currentSelected
+{
+    DayCellView* dayView_previous = [self getDayViewForDayId:_dayId_currentSelected];
+    dayView_previous.isSelected = NO;
+    _dayId_currentSelected = dayId_currentSelected;
+    DayCellView* dayView_current = [self getDayViewForDayId:dayId_currentSelected];
+    dayView_current.isSelected = YES;
+}
+
+- (void)setDataResource:(id<MonthViewResource>)dataResource
+{
+    _dataResource = dataResource;
+    [self redraw];
+}
+#pragma mark - DayCellViewDelegate
+- (void)didTapOnDayCellView:(DayCellView *)dayCellView
+{
+    self.dayId_currentSelected = dayCellView.dayId;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(monthView:didSelectDayId:)])
+    {
+        [self.delegate monthView:self didSelectDayId:dayCellView.dayId];
+    }
+}
 @end

@@ -10,7 +10,7 @@
 #import "MonthView.h"
 #import "DayCellView.h"
 
-@interface TestViewController ()<MonthViewResource>
+@interface TestViewController ()<MonthViewResource, MonthViewDelegate>
 @property (nonatomic, strong) MonthView* monthView;
 @end
 
@@ -63,7 +63,7 @@
     self.monthView.year = 2014;
     self.monthView.month = 1;
     self.monthView.dataResource = self;
-    
+    self.monthView.delegate = self;
     [self.view addSubview:self.monthView];
     
 //    NSTimer* timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(newMonth:) userInfo:self.monthView repeats:YES];
@@ -92,14 +92,20 @@
 #pragma mark - MonthViewResource
 - (DayCellView*)dayViewForDayId:(NSInteger)dayId
 {
-    static NSInteger i = 10;
-    i++;
     DayCellView* dayView = [[DayCellView alloc]initWithFrame:CGRectMake(0, 0, 320 / 7 - 1 , 480 / 7 - 1)];
     UILabel* label = [[UILabel alloc]initWithFrame:dayView.bounds];
     label.backgroundColor = [UIColor clearColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = [NSString stringWithFormat:@"%d", i];
+    label.text = [NSString stringWithFormat:@"%d", dayId % 100];
     [dayView addSubview:label];
     return dayView;
+}
+
+#pragma mark - MonthViewDelegate
+- (void)monthView:(MonthView *)monthView didSelectDayId:(NSInteger)dayId
+{
+    NSLog(@"selected: %d", dayId);
+    DayCellView* dayView = [monthView dayViewForDayId:dayId];
+//    dayView.backgroundColor = [UIColor greenColor];
 }
 @end
