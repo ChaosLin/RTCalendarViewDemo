@@ -8,8 +8,11 @@
 
 #import "MonthView.h"
 #import "DateUtils.h"
+#import "DayCellView.h"
 
 @interface MonthView()
+
+@property (nonatomic, strong) NSMutableDictionary* dic_day2views;
 
 - (NSInteger)daysInThisMonth;
 - (NSInteger)weekdayOfTheFirstDayInThisMonth;
@@ -20,7 +23,7 @@
 - (NSInteger)generateRows;
 
 //view
-- (UIView*)generateViewForDayId:(NSInteger)dayId;
+- (DayCellView*)getDayViewForDayId:(NSInteger)dayId;
 - (void)redraw;
 @end
 
@@ -32,6 +35,7 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
+        self.dic_day2views = [NSMutableDictionary dictionaryWithCapacity:31];
     }
     return self;
 }
@@ -46,44 +50,78 @@
 
 - (void)redraw
 {
-    [UIView animateWithDuration:0.2 animations:^(void){
-        self.alpha = 0.99;
-        for (UIView* subView in self.subviews)
+    [self.dic_day2views removeAllObjects];
+    for (UIView* subView in self.subviews)
+    {
+        [subView removeFromSuperview];
+    }
+    NSInteger count_day = [DateUtils numberOfDaysInYear:self.year month:self.month];
+    for (NSInteger i = 1; i <= count_day; i++)
+    {
+        //得到DayView
+        NSInteger dayId = [DateUtils getDayIdWithYear:self.year month:self.month day:i];
+        DayCellView* dayView = [self getDayViewForDayId:dayId];
+        if (dayView && !dayView.superview)
         {
-            [subView removeFromSuperview];
+            [self addSubview:dayView];
         }
-        if (self.year && self.month)
-        {
-            NSInteger numberOfDays = [DateUtils numberOfDaysInYear:self.year month:self.month];
-            for (NSInteger i = 1; i <= numberOfDays; i++)
-            {
-                NSInteger dayId = [DateUtils getDayIdWithYear:self.year month:self.month day:i];
-                UIView* view_day = [self generateViewForDayId:dayId];
-                [self addSubview:view_day];
-            }
-        }
-    }completion:^(BOOL finished){
-        self.alpha = 1.0;
-        
-    }];
+        //设置center
+        NSInteger row = [self getRowForDayId:dayId];
+        NSInteger volume = [self getVolumeForDayId:dayId];
+        CGPoint center = CGPointMake((int)(self.frame.size.width / 7.0 * (volume + 0.5)), (int)((dayView.frame.size.height + 1) * (row + 0.5)));
+        dayView.center = center;
+        dayView.hidden = NO;
+    }
+    for (NSInteger i = count_day + 1; i <= 31; i++)
+    {
+        //得到多余的DayView
+        NSInteger dayId = [DateUtils getDayIdWithYear:self.year month:self.month day:i];
+        DayCellView* dayView = [self getDayViewForDayId:dayId];
+        dayView.hidden = YES;
+    }
 }
 
-- (UIView*)generateViewForDayId:(NSInteger)dayId
+- (void)layoutSubviews
 {
-    float width_bounds = self.bounds.size.width;
-    float height_bounds = self.bounds.size.height;
-    float width = (int)(width_bounds / 7);
-    float height = (int)(height_bounds / 7);
-    NSInteger row = [self getRowForDayId:dayId];
-    NSInteger volume = [self getVolumeForDayId:dayId];
-    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(width * volume, height * row, width, height)];
-    view.backgroundColor = [UIColor greenColor];
-    UILabel* label = [[UILabel alloc]initWithFrame:view.bounds];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.text = [NSString stringWithFormat:@"%d", dayId % 100];
-    label.backgroundColor = [UIColor greenColor];
-    [view addSubview:label];
-    return view;
+//    NSLog(@"current month is %d", self.month);
+    [super layoutSubviews];
+}
+
+- (DayCellView*)getDayViewForDayId:(NSInteger)dayId
+{
+    DayCellView* dayView = nil;
+    NSInteger day = dayId % 100;
+    NSString* str_day = [NSString stringWithFormat:@"%d", day];
+    if ([self.dic_day2views valueForKey:str_day])
+    {
+        dayView = [self.dic_day2views valueForKeyPath:[NSString stringWithFormat:@"%d", day]];
+    }
+    else
+    {
+        //如果没有view,而且day>当前月的count,return nil
+        NSInteger count_day = [DateUtils numberOfDaysInYear:self.year month:self.month];
+        if (day > count_day)
+        {
+            dayView = nil;
+        }
+        else
+        {
+            if (self.dataResource && [self.dataResource respondsToSelector:@selector(dayViewForDayId:)])
+            {
+                dayView = [self.dataResource dayViewForDayId:dayId];
+            }
+            if (dayView)
+            {
+                [self.dic_day2views setValue:dayView forKey:str_day];
+            }
+        }
+    }
+    return dayView;
+}
+
+- (DayCellView*)cellViewForDay:(NSInteger)day
+{
+    return [self.dic_day2views valueForKey:[NSString stringWithFormat:@"%d", day]];
 }
 
 - (void)showPreviousMonth
@@ -111,6 +149,21 @@
     
 }
 
+- (void)showToday
+{
+    NSDate* date = [NSDate date];
+    NSInteger dayId = [DateUtils getDayIdWithDate:date];
+    NSInteger year = dayId / 10000;
+    NSInteger month = dayId / 100 % 100;
+    NSInteger day = dayId % 100;
+    _year = year;
+    self.month = month;
+}
+
+- (void)reloadView
+{
+    [self redraw];
+}
 #pragma mark - base
 - (NSInteger)daysInThisMonth
 {

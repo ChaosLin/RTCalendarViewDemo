@@ -8,8 +8,9 @@
 
 #import "TestViewController.h"
 #import "MonthView.h"
+#import "DayCellView.h"
 
-@interface TestViewController ()
+@interface TestViewController ()<MonthViewResource>
 @property (nonatomic, strong) MonthView* monthView;
 @end
 
@@ -61,6 +62,7 @@
     self.monthView = [[MonthView alloc]initWithFrame:CGRectMake(00, 100, 320, 480)];
     self.monthView.year = 2014;
     self.monthView.month = 1;
+    self.monthView.dataResource = self;
     
     [self.view addSubview:self.monthView];
     
@@ -84,6 +86,20 @@
 
 - (void)showNextMonth
 {
-    [self.monthView showNextMonth];
+    [self.monthView showToday];
+}
+
+#pragma mark - MonthViewResource
+- (DayCellView*)dayViewForDayId:(NSInteger)dayId
+{
+    static NSInteger i = 10;
+    i++;
+    DayCellView* dayView = [[DayCellView alloc]initWithFrame:CGRectMake(0, 0, 320 / 7 - 1 , 480 / 7 - 1)];
+    UILabel* label = [[UILabel alloc]initWithFrame:dayView.bounds];
+    label.backgroundColor = [UIColor clearColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = [NSString stringWithFormat:@"%d", i];
+    [dayView addSubview:label];
+    return dayView;
 }
 @end
