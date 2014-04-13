@@ -21,8 +21,8 @@
 		5935BB3A18F7675900C0EBF4 /* RTCalendarViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB3918F7675900C0EBF4 /* RTCalendarViewDemoTests.m */; };
 		5935BB4618F7683200C0EBF4 /* MonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4518F7683200C0EBF4 /* MonthView.m */; };
 		5935BB4718F7683200C0EBF4 /* MonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4518F7683200C0EBF4 /* MonthView.m */; };
-		5935BB4B18F7688200C0EBF4 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4A18F7688200C0EBF4 /* DateUtils.m */; };
-		5935BB4C18F7688200C0EBF4 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935BB4A18F7688200C0EBF4 /* DateUtils.m */; };
+		59A602DB18FB57D40069A690 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A602DA18FB57D40069A690 /* DateUtils.m */; };
+		59A602DC18FB57D40069A690 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A602DA18FB57D40069A690 /* DateUtils.m */; };
 		59C1DCB718FA34F80036BEC5 /* DayCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C1DCB618FA34F80036BEC5 /* DayCellView.m */; };
 		59D0B2FF18F91A4D0061D519 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D0B2FE18F91A4D0061D519 /* TestViewController.m */; };
 /* End PBXBuildFile section */
@@ -56,8 +56,8 @@
 		5935BB3918F7675900C0EBF4 /* RTCalendarViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTCalendarViewDemoTests.m; sourceTree = "<group>"; };
 		5935BB4418F7683200C0EBF4 /* MonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthView.h; sourceTree = "<group>"; };
 		5935BB4518F7683200C0EBF4 /* MonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthView.m; sourceTree = "<group>"; };
-		5935BB4918F7688200C0EBF4 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
-		5935BB4A18F7688200C0EBF4 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
+		59A602D918FB57D40069A690 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
+		59A602DA18FB57D40069A690 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 		59C1DCB518FA34F80036BEC5 /* DayCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCellView.h; sourceTree = "<group>"; };
 		59C1DCB618FA34F80036BEC5 /* DayCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCellView.m; sourceTree = "<group>"; };
 		59D0B2FD18F91A4D0061D519 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -91,6 +91,7 @@
 		5935BB0818F7675900C0EBF4 = {
 			isa = PBXGroup;
 			children = (
+				59A602D818FB57D40069A690 /* DateUtils */,
 				5935BB1A18F7675900C0EBF4 /* RTCalendarViewDemo */,
 				5935BB3318F7675900C0EBF4 /* RTCalendarViewDemoTests */,
 				5935BB1318F7675900C0EBF4 /* Frameworks */,
@@ -121,7 +122,6 @@
 		5935BB1A18F7675900C0EBF4 /* RTCalendarViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				5935BB4818F7686800C0EBF4 /* DateUtils */,
 				5935BB4318F7676C00C0EBF4 /* RTCalendarView */,
 				5935BB2318F7675900C0EBF4 /* AppDelegate.h */,
 				5935BB2418F7675900C0EBF4 /* AppDelegate.m */,
@@ -173,13 +173,14 @@
 			path = RTCalendarView;
 			sourceTree = "<group>";
 		};
-		5935BB4818F7686800C0EBF4 /* DateUtils */ = {
+		59A602D818FB57D40069A690 /* DateUtils */ = {
 			isa = PBXGroup;
 			children = (
-				5935BB4918F7688200C0EBF4 /* DateUtils.h */,
-				5935BB4A18F7688200C0EBF4 /* DateUtils.m */,
+				59A602D918FB57D40069A690 /* DateUtils.h */,
+				59A602DA18FB57D40069A690 /* DateUtils.m */,
 			);
-			path = DateUtils;
+			name = DateUtils;
+			path = ../DateUtilsDemonstration/DateUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,8 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5935BB2518F7675900C0EBF4 /* AppDelegate.m in Sources */,
+				59A602DB18FB57D40069A690 /* DateUtils.m in Sources */,
 				59C1DCB718FA34F80036BEC5 /* DayCellView.m in Sources */,
-				5935BB4B18F7688200C0EBF4 /* DateUtils.m in Sources */,
 				5935BB2118F7675900C0EBF4 /* main.m in Sources */,
 				5935BB4618F7683200C0EBF4 /* MonthView.m in Sources */,
 				59D0B2FF18F91A4D0061D519 /* TestViewController.m in Sources */,
@@ -291,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5935BB3A18F7675900C0EBF4 /* RTCalendarViewDemoTests.m in Sources */,
-				5935BB4C18F7688200C0EBF4 /* DateUtils.m in Sources */,
+				59A602DC18FB57D40069A690 /* DateUtils.m in Sources */,
 				5935BB4718F7683200C0EBF4 /* MonthView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
