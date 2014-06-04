@@ -33,6 +33,8 @@
 
 - (void)showPreviousMonth;
 - (void)showNextMonth;
+- (void)showPreviousYear;
+- (void)showNextYear;
 - (void)showToday;
 
 - (void)reloadView;//类似UITableview的ReloadData,这个操作会删除现有的view，并重新生成DayView

@@ -12,6 +12,9 @@
 
 @interface MonthView()<DayCellViewDelegate>
 
+@property (nonatomic, assign) BOOL hasHeader;
+@property (nonatomic, strong) UIView* view_header;
+@property (nonatomic, strong) UIView* view_body;
 @property (nonatomic, strong) NSMutableDictionary* dic_day2views;
 
 - (NSInteger)daysInThisMonth;
@@ -36,6 +39,23 @@
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
         self.dic_day2views = [NSMutableDictionary dictionaryWithCapacity:31];
+        
+        UISwipeGestureRecognizer* gestrue_right = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onReceiveRightSwipeGesture:)];
+        gestrue_right.direction = UISwipeGestureRecognizerDirectionRight;
+        [self addGestureRecognizer:gestrue_right];
+        
+        UISwipeGestureRecognizer* gestrue_left = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onReceiveLeftSwipeGesture:)];
+        gestrue_left.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self addGestureRecognizer:gestrue_left];
+        
+        UISwipeGestureRecognizer* gestrue_up = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onReceiveUpSwipeGesture:)];
+        gestrue_up.direction = UISwipeGestureRecognizerDirectionUp;
+        [self addGestureRecognizer:gestrue_up];
+        
+        UISwipeGestureRecognizer* gestrue_down= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onReceiveDownSwipeGesture:)];
+        gestrue_down.direction = UISwipeGestureRecognizerDirectionDown;
+        [self addGestureRecognizer:gestrue_down];
+        
     }
     return self;
 }
@@ -165,6 +185,16 @@
     
 }
 
+- (void)showPreviousYear
+{
+    self.year++;
+}
+
+- (void)showNextYear
+{
+    self.year--;
+}
+
 - (void)showToday
 {
     NSDate* date = [NSDate date];
@@ -242,6 +272,12 @@
     _dataResource = dataResource;
     [self redraw];
 }
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    [self redraw];
+}
 #pragma mark - DayCellViewDelegate
 - (void)didTapOnDayCellView:(DayCellView *)dayCellView
 {
@@ -251,4 +287,26 @@
         [self.delegate monthView:self didSelectDayId:dayCellView.dayId];
     }
 }
+
+#pragma mark - Gesture
+- (void)onReceiveLeftSwipeGesture:(id)gesture
+{
+    [self showNextMonth];
+}
+
+- (void)onReceiveRightSwipeGesture:(id)gesture
+{
+    [self showPreviousMonth];
+}
+
+- (void)onReceiveUpSwipeGesture:(id)gesture
+{
+    [self showPreviousYear];
+}
+
+- (void)onReceiveDownSwipeGesture:(id)gesture
+{
+    [self showNextYear];
+}
+
 @end

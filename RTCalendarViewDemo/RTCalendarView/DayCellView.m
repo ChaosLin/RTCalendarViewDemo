@@ -19,7 +19,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor blueColor];
+//        self.backgroundColor = [UIColor blueColor];
         UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didReceiveTapGesture:)];
         [self addGestureRecognizer:tapGesture];
     }
@@ -51,13 +51,13 @@
 
 - (void)setIsSelected:(BOOL)isSelected
 {
-    if (isSelected)
-    {
-        self.backgroundColor = [UIColor greenColor];
-    }
-    else
-    {
-        self.backgroundColor = [UIColor blueColor];
-    }
+//    if (isSelected)
+//    {
+//        self.backgroundColor = [UIColor greenColor];
+//    }
+//    else
+//    {
+//        self.backgroundColor = [UIColor blueColor];
+//    }
 }
 @end
