@@ -36,6 +36,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        NSInteger today = [DateUtils getTodayDateId];
+        NSInteger year = today / 10000;
+        NSInteger month = today % 10000 / 100;
+        self.year = year;
+        self.month = month;
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
         self.dic_day2views = [NSMutableDictionary dictionaryWithCapacity:31];
@@ -59,7 +64,6 @@
     }
     return self;
 }
-
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
