@@ -13,6 +13,9 @@
 @end
 
 @interface DayCellView : UIView
+{
+    NSInteger _dayId;
+}
 @property (nonatomic, assign) NSInteger dayId;
 @property (nonatomic, weak) id <DayCellViewDelegate> delegate;
 @property (nonatomic, assign) BOOL isSelected;
