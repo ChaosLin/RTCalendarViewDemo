@@ -205,7 +205,7 @@
     NSInteger dayId = [DateUtils getDayIdWithDate:date];
     NSInteger year = dayId / 10000;
     NSInteger month = dayId / 100 % 100;
-    NSInteger day = dayId % 100;
+//    NSInteger day = dayId % 100;
     _year = year;
     self.month = month;
 }
